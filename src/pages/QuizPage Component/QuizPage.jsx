@@ -8,6 +8,7 @@ import './QuizPage.css';
 const QuizPage = ({ countryList, questions, setPage }) => {
   const [country, setCountry] = useState('');
   const [question, setQuestion] = useState('');
+
   const [countryInfo, setCountryInfo] = useState({
     capital: '',
     flag: '',
