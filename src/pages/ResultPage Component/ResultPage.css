@@ -1,0 +1,50 @@
+.result {
+  color: #1d355d;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins';
+  font-style: normal;
+}
+.result-page-image {
+  width: 238px;
+  height: 136px;
+  margin: 42px auto 72px auto;
+}
+.result-text {
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+}
+.result-correct {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  margin-bottom: 71px;
+}
+
+.result-correct span {
+  color: #6fcf97;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.try-again-button {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  box-sizing: border-box;
+  width: 209px;
+  height: 62px;
+  border: 2px solid #1d355d;
+  border-radius: 12px;
+  color: #1d355d;
+  background-color: white;
+  margin-bottom: 33px;
+  cursor: pointer;
+}
+.try-again-button:hover {
+  background-color: rgb(205, 204, 204);
+}

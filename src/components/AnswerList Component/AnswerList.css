@@ -1,0 +1,25 @@
+.answer-list-button {
+  background: #f9a826;
+  box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+  border-radius: 12px;
+  width: 116px;
+  height: 56px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  color: #ffffff;
+  text-transform: capitalize;
+  align-self: flex-end;
+  margin-right: 5%;
+  cursor: pointer;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

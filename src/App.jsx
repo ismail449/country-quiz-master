@@ -1,45 +1,35 @@
-import { useState } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { AnswerProvider } from './context/AnswerContext';
+import { countryList, questions } from './data';
+import QuizPage from './pages/QuizPage Component/QuizPage';
+import ResultPage from './pages/ResultPage Component/ResultPage';
 import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
+  const [page, setPage] = useState('quiz');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <AnswerProvider
+      value={{
+        answer: 'no answer',
+        result: 0,
+      }}
+    >
+      <div className="App">
+        <h1 className="title"> country quiz </h1>
+        {page === 'quiz' ? (
+          <>
+            <QuizPage
+              countryList={countryList}
+              questions={questions}
+              setPage={setPage}
+            />
+          </>
+        ) : (
+          <ResultPage setPage={setPage} />
+        )}
+      </div>
+    </AnswerProvider>
   );
-}
+};
 
 export default App;
