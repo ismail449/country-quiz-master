@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(/background.png);
+  background-image: url('./background.png');
   height: 900px;
   background-position: center;
   background-size: cover;
