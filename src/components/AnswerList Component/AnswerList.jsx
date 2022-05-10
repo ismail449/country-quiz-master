@@ -5,25 +5,31 @@ import { countryList } from '../../data';
 import getRandomInt from '../../getRandomInt';
 import './AnswerList.css';
 
-const AnswerList = ({ correctAnswer, getNextQuestion }) => {
+const AnswerList = ({ correctAnswer, getNextQuestion, setPage }) => {
   const letters = ['A', 'B', 'C', 'D', 'E'];
   const [answers, setAnswers] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
   const { answer, nextAnswer } = useAnswer();
-
+  console.log(answer);
   useEffect(() => {
     let answersArray = [];
     while (answersArray.length < 4) {
       const index = getRandomInt(countryList.length);
       const country = countryList[index];
       if (answersArray.indexOf(country) === -1 && country !== correctAnswer) {
-        answersArray.push(country);
+        answersArray.push({ country: country, isCorrect: false });
       }
     }
-    answersArray.push(correctAnswer);
+    answersArray.push({ country: correctAnswer, isCorrect: true });
     const array = shuffle(answersArray);
     setAnswers(array);
   }, [correctAnswer]);
+  useEffect(() => {
+    if (answer === 'correct' || answer === 'not correct') {
+      setShowAnswer(true);
+    }
+  }, [answer]);
   const shuffle = (array) => {
     let currentIndex = array.length,
       randomIndex;
@@ -39,9 +45,16 @@ const AnswerList = ({ correctAnswer, getNextQuestion }) => {
   };
 
   const onClickHandle = () => {
-    setIsClicked(false);
-    nextAnswer();
-    getNextQuestion();
+    if (answer === 'correct') {
+      setShowAnswer(false);
+      setIsClicked(false);
+      nextAnswer();
+      getNextQuestion();
+    } else if (answer === 'not correct') {
+      setShowAnswer(false);
+      setIsClicked(false);
+      setPage('result');
+    }
   };
 
   return (
@@ -50,8 +63,8 @@ const AnswerList = ({ correctAnswer, getNextQuestion }) => {
         answers.map((answer, index) => (
           <Answer
             answerOption={answer}
-            correctAnswer={correctAnswer}
             letter={letters[index]}
+            showAnswer={showAnswer}
             key={answer}
             isClicked={isClicked}
             setIsClicked={setIsClicked}
@@ -60,7 +73,7 @@ const AnswerList = ({ correctAnswer, getNextQuestion }) => {
       ) : (
         <div className="loader"></div>
       )}
-      {answer === 'correct' ? (
+      {answer !== 'no answer' ? (
         <button className="answer-list-button" onClick={() => onClickHandle()}>
           next
         </button>

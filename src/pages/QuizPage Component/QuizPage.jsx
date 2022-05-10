@@ -14,12 +14,6 @@ const QuizPage = ({ countryList, questions, setPage }) => {
     flag: '',
     language: '',
   });
-  const { answer } = useAnswer();
-  useEffect(() => {
-    if (answer === 'not correct') {
-      setPage('result');
-    }
-  }, [answer]);
   useEffect(() => {
     fetchCoutry();
   }, []);
@@ -73,6 +67,7 @@ const QuizPage = ({ countryList, questions, setPage }) => {
           <AnswerList
             getNextQuestion={getNextQuestion}
             correctAnswer={country}
+            setPage={setPage}
           />
         ) : (
           <div className="loader"></div>

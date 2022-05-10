@@ -36,6 +36,11 @@
   background: #60bf88;
   color: #ffffff;
 }
+.answer-list .correct:hover {
+  background: #60bf88;
+  color: #ffffff;
+}
+
 .wrong {
   background: #ea8282;
   color: #ffffff;

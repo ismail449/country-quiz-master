@@ -5,14 +5,14 @@ import './Answer.css';
 const Answer = ({
   answerOption,
   letter,
-  correctAnswer,
   isClicked,
   setIsClicked,
+  showAnswer,
 }) => {
   const [isCorrect, setIsCorrect] = useState('no answer');
-  const { answer, answerIsCorrect, answerIsWrong } = useAnswer();
+  const { answerIsCorrect, answerIsWrong } = useAnswer();
   const isAnswerCorrect = () => {
-    if (answerOption === correctAnswer) {
+    if (answerOption.isCorrect) {
       answerIsCorrect();
       setIsCorrect('correct');
     } else {
@@ -31,14 +31,14 @@ const Answer = ({
   return (
     <div
       className={`answer
-        ${isCorrect === 'correct' ? 'correct' : ''}
-				${isCorrect === 'not correct' ? 'wrong' : ''}
+        ${showAnswer && answerOption.isCorrect ? 'correct' : ''}
+				${isCorrect === 'not correct' && showAnswer ? 'wrong' : ''}
 				${isCorrect === 'no answer' ? 'notChoosen' : ''}`}
       onClick={() => onClickHandle()}
     >
       <p className="letter"> {letter} </p>
-      <p className="answer-option">{answerOption}</p>
-      {isCorrect === 'correct' ? (
+      <p className="answer-option">{answerOption.country}</p>
+      {showAnswer && answerOption.isCorrect ? (
         <span className="material-icons">check_circle_outline</span>
       ) : null}
       {isCorrect === 'not correct' ? (
