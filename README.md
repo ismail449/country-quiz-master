@@ -42,6 +42,7 @@
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
+- [React Context API]
 - [REST COUNTRIES API](https://restcountries.com/)
 
 ## Features
@@ -51,12 +52,6 @@
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories.
 
-
-
-## Acknowledgements
-
-
-
 ## Contact
 
-- GitHub (https://github.com/)
+- GitHub (https://github.com/ismail449)
